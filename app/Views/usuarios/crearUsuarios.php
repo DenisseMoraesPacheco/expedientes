@@ -163,7 +163,7 @@
                 <span class="breadcrumb-separator">/</span>
                 <span>Crear Usuario</span>
             </div>
-            <a href="<?= site_url('usuarios') ?>" class="btn btn-secondary">
+            <a href="<?= '../portalProcesos/procesos' ?>" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </nav>
@@ -350,7 +350,7 @@
                                 <button type="submit" class="btn btn-primary" id="btnGuardar">
                                     <i class="fas fa-save"></i> Guardar Usuario
                                 </button>
-                                <a href="<?= site_url('usuarios') ?>" class="btn btn-secondary">
+                                <a href="<?= '../portalProcesos/procesos' ?>" class="btn btn-secondary">
                                     <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
@@ -367,11 +367,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // Variables globales para el JS - CORRECCIÓN IMPORTANTE
-        const ADMIN_GUARDAR_URL = '<?= site_url('admin/guardar') ?>';
-        const SITE_URL = '<?= site_url() ?>';
-    </script>
+
     <script src="../public/js/CrearUsuario.js"></script>
     <script>
         // Funciones de validación de campos

@@ -202,9 +202,11 @@
             <div class="breadcrumb">
                 <a href="<?= site_url('/') ?>">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
+                <a href="<?= '../portalProcesos/procesos' ?>">Portal procesos</a>
+                <span class="breadcrumb-separator">/</span>
                 <span>Usuarios</span>
             </div>
-            <a href="<?= site_url('usuarios/crearUsuarios') ?>" class="btn btn-primary">
+            <a href="../usuarios/crearUsuarios" class="btn btn-primary">
                 <i class="fas fa-user-plus"></i> Nuevo Usuario
             </a>
         </nav>

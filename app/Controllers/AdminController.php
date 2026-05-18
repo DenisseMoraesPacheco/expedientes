@@ -70,7 +70,7 @@ class AdminController extends BaseController
                 return $this->response->setJSON([
                     'success' => true,
                     'message' => 'Usuario guardado exitosamente',
-                    'redirect' => site_url('usuarios'), // Redirige a la lista de usuarios
+                    'redirect' => '../usuarios/listar', // Redirige a la lista de usuarios
                     'id_usuario' => $idUsuario
                 ]);
             } else {

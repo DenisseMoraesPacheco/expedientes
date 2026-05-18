@@ -6,9 +6,9 @@
     <title>Editar Usuario | Sistema de Gestión</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="<?= base_url('../public/css/styles.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('../../public/css/editarUsuario.css') ?>">
     <style>
-        /* Aquí copia los mismos estilos que tienes en crearUsuarios.php */
+        
         .form-section {
             transition: all 0.3s ease;
             margin-bottom: 30px;
@@ -285,7 +285,7 @@
                                 <button type="submit" class="btn btn-primary" id="btnGuardar">
                                     <i class="fas fa-save"></i> Actualizar Usuario
                                 </button>
-                                <a href="<?= site_url('usuarios/listar') ?>" class="btn btn-secondary">
+                                <a href="<?= site_url('/usuarios/listar') ?>" class="btn btn-secondary">
                                     <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
@@ -303,102 +303,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Validaciones y lógica de campos según rol
-        $(document).ready(function() {
-            // Función para mostrar/ocultar campos según rol
-            function toggleCamposPorRol() {
-                var rol = $('#id_rol').val();
-                
-                if (rol == '1') { // ADMINISTRADOR
-                    $('#campos-proveedor').hide();
-                    $('#seccion-datos-fiscales').show();
-                    $('#seccion-direccion').show();
-                } else if (rol == '2') { // USUARIO
-                    $('#campos-proveedor').hide();
-                    $('#seccion-datos-fiscales').hide();
-                    $('#seccion-direccion').hide();
-                } else if (rol == '3') { // PROVEEDOR
-                    $('#campos-proveedor').show();
-                    $('#seccion-datos-fiscales').show();
-                    $('#seccion-direccion').show();
-                }
-            }
-            
-            // Ejecutar al cargar y al cambiar rol
-            toggleCamposPorRol();
-            $('#id_rol').change(toggleCamposPorRol);
-            
-            // Validación de contraseñas
-            $('#confirm_password').on('input', function() {
-                var password = $('#password').val();
-                var confirm = $(this).val();
-                if (password && confirm) {
-                    $(this).css('border-color', password !== confirm ? '#dc3545' : '#28a745');
-                } else {
-                    $(this).css('border-color', '#ddd');
-                }
-            });
-            
-            // Formateo de campos
-            $('#rfc').on('input', function() {
-                $(this).val($(this).val().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 13));
-            });
-            
-            $('#curp').on('input', function() {
-                $(this).val($(this).val().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 18));
-            });
-            
-            $('#telefono_principal').on('input', function() {
-                $(this).val($(this).val().replace(/[^0-9]/g, ''));
-            });
-            
-            // Envío del formulario
-            $('#form-usuario').on('submit', function(e) {
-                e.preventDefault();
-                
-                var formData = $(this).serialize();
-                var $btn = $('#btnGuardar');
-                $btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Actualizando...');
-                
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: 'POST',
-                    data: formData,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: '¡Actualizado!',
-                                text: response.message,
-                                confirmButtonColor: '#800020'
-                            }).then(function() {
-                                window.location.href = response.redirect || '<?= site_url('usuarios/listar') ?>';
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: response.message,
-                                confirmButtonColor: '#800020'
-                            });
-                            $btn.prop('disabled', false).html('<i class="fas fa-save"></i> Actualizar Usuario');
-                        }
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.responseText);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Ocurrió un error al procesar la solicitud',
-                            confirmButtonColor: '#800020'
-                        });
-                        $btn.prop('disabled', false).html('<i class="fas fa-save"></i> Actualizar Usuario');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="../../public/js/EditarUsuario.js">    </script>
 </body>
 </html>

@@ -522,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // CORRECCIÓN IMPORTANTE: Usar la variable global definida en la vista
-            fetch(ADMIN_GUARDAR_URL, {
+            fetch('../admin/guardar', {
                 method: 'POST',
                 body: formData,
                 headers: {

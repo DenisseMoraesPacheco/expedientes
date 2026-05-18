@@ -21,6 +21,7 @@ class UsuarioModel extends Model
         'active',
         'rfc',
         'curp',
+        'num_credencial_votar',
         'nombre_razon_social',
         'tipo_persona',
         'telefono_principal',
@@ -39,6 +40,15 @@ class UsuarioModel extends Model
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
     
+
+ public function getProveedores()
+{
+    return $this->select('usuarios.*, roles.nombre AS nombre_rol')
+        ->join('roles', 'roles.id_rol = usuarios.id_rol')
+        ->where('usuarios.id_rol', 3) // Trae todos los usuarios con rol proveedor
+        ->get()
+        ->getResultArray();
+}
     // Método para obtener usuario con su rol
     public function editarUsuario($id)
     {

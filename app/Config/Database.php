@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'root',
         'password'     => '277290DEN',
-        'database'     => 'db_sistemaadquisiciones',
+        'database'     => 'db_sistemaadquisiciones2',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
